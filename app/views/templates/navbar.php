@@ -15,7 +15,7 @@
                     <a class="nav-link active" aria-current="page" href="<?= BASEURL; ?>/beranda">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= BASEURL; ?>/following">Following</a>
+                    <a class="nav-link" href="<?= BASEURL; ?>/following">Follow</a>
                 </li>
                 <li class="nav-item">
                     <!-- Button trigger modal -->
@@ -31,6 +31,9 @@
                         </div>
                     </form>
                 </div>
+                <li>
+                    <img src="<?= BASEURL; ?>/img/profile.jpg" , alt="Photo" , height="40" , class="rounded-circle shadow">
+                </li>
             </ul>
         </div>
     </div>

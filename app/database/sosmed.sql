@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Des 2023 pada 13.06
+-- Waktu pembuatan: 21 Des 2023 pada 17.27
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -38,7 +38,29 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
-(2, 'admin', 'admin');
+(1, 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `followers`
+--
+
+CREATE TABLE `followers` (
+  `followers_id` int(11) NOT NULL,
+  `following_id` int(11) DEFAULT NULL,
+  `follower_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `followers`
+--
+
+INSERT INTO `followers` (`followers_id`, `following_id`, `follower_id`) VALUES
+(1, 6, 1),
+(2, 2, 1),
+(3, 3, 1),
+(4, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -60,8 +82,7 @@ INSERT INTO `posting` (`id_posting`, `id`, `content`) VALUES
 (1, 1, 'testing'),
 (2, 2, 'testing2'),
 (3, 6, 'oke'),
-(4, 6, 'content admin'),
-(5, NULL, NULL);
+(4, 6, 'content admin');
 
 -- --------------------------------------------------------
 
@@ -94,6 +115,12 @@ INSERT INTO `users` (`id`, `username`, `password`) VALUES
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `followers`
+--
+ALTER TABLE `followers`
+  ADD PRIMARY KEY (`followers_id`);
 
 --
 -- Indeks untuk tabel `posting`
@@ -138,7 +165,7 @@ ALTER TABLE `users`
 -- Ketidakleluasaan untuk tabel `posting`
 --
 ALTER TABLE `posting`
-  ADD CONSTRAINT `posting_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `posting_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
