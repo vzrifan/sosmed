@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="col">
-            <form method="post" action="<?= BASEURL; ?>/dashboardAdmin">
+            <form method="post" action="<?= BASEURL; ?>/loginAdmin/proccessLogin">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>
                 <label for="password">Password</label>

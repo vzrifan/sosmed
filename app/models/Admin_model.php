@@ -25,7 +25,7 @@ class Admin_model
 
     public function loginAdmin($data)
     {
-        $query = "SELECT * FROM users WHERE username = :username";
+        $query = "SELECT * FROM admin WHERE username = :username";
         $this->db->query($query);
         $this->db->bind('username', $data['username']);
 
