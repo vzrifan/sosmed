@@ -4,7 +4,9 @@ class LoginUser extends Controller
 {
     public function index()
     {
+        $data['judul'] = "Login";
         $data['captchaText'] = $this->generateCaptcha();
+        $this->view('templates/header', $data);
         $this->view('loginUser/index', $data);
         $this->view('templates/footer');
     }
@@ -30,7 +32,9 @@ class LoginUser extends Controller
             // Form submission successful
             unset($_SESSION['captcha_result']);
             if ($this->model('User_model')->loginUser($_POST)) {
-                $_SESSION["username"] = $_POST['username'];
+                $username = $_POST['username'];
+                $userId = $this->model('User_model')->getUserIdByUsername($username);
+                $_SESSION["id"] = $userId;
                 header('Location: ' . BASEURL . '/beranda');
                 exit;
             } else {

@@ -30,23 +30,23 @@ class User_model
         $this->db->query($checkQuery);
         $this->db->bind('username', $data['username']);
         $this->db->execute();
-    
+
         if ($this->db->rowCount() > 0) {
             return -1;
         }
-    
+
         $insertQuery = "INSERT INTO users VALUES ('', :username, :password)";
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-    
+
         $this->db->query($insertQuery);
         $this->db->bind('username', $data['username']);
         $this->db->bind('password', $data['password']);
-    
+
         $this->db->execute();
-    
+
         return $this->db->rowCount();
     }
-    
+
 
     public function loginUser($data)
     {
@@ -59,5 +59,41 @@ class User_model
         $user = $this->db->single();
 
         return ($user && password_verify($data['password'], $user['password']));
+    }
+
+
+    public function cariDataUser()
+    {
+        $keyword = $_POST['keyword'];
+        $query = "SELECT * FROM users WHERE username LIKE :keyword";
+        $this->db->query($query);
+        $this->db->bind('keyword', "%$keyword%");
+
+        return  $this->db->resultSet();
+    }
+
+    public function getUserIdByUsername($username)
+    {
+        $query = "SELECT id FROM " . $this->table . " WHERE username = :username";
+
+        $this->db->query($query);
+        $this->db->bind('username', $username);
+
+        $this->db->execute();
+
+        $user = $this->db->single();
+
+        return $user ? $user['id'] : null;
+    }
+
+    public function hapusDataUser($id)
+    {
+        $query = "DELETE FROM users WHERE id = :id";
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
     }
 }

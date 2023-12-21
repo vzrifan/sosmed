@@ -4,7 +4,9 @@ class Register extends Controller
 {
     public function index()
     {
+        $data['judul'] = "Register";
         $data['captchaText'] = $this->generateCaptcha();
+        $this->view('templates/header', $data);
         $this->view('register/index', $data);
         $this->view('templates/footer');
     }

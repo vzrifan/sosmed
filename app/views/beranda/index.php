@@ -1,5 +1,11 @@
-<div class="container">
-    <form action="<?= BASEURL; ?>/beranda/logout" method="post">
-        <button type="submit" class="btn-primary">Logout</button>
-    </form>
-</div>
+<?php foreach ($data['posting'] as $posting) : ?>
+    <ul class="list-group d-flex">
+        <li class="list-group-item">
+            <?= $posting['username']; ?>
+        </li>
+        <li class="list-group-item">
+            <?= $posting['content']; ?>
+        </li>
+        <br><br>
+    <?php endforeach; ?>
+    </ul>
