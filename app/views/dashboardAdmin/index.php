@@ -1,3 +1,6 @@
+<head>
+    <link rel="stylesheet" href=".../public/css/styles.css">
+</head>
 <div class="container">
     <form action="<?= BASEURL; ?>/dashboardAdmin/logout" method="post">
         <button type="submit" class="btn-primary">Logout</button>
@@ -5,14 +8,14 @@
     <br><br>
     <div class="col">
         <button type="button" class="btn btn-primary tombolTambahData" data-bs-toggle="modal" data-bs-target="#formModal">
-            tambah
+            TAMBAH
         </button>
     </div>
-    <table>
+    <table border="3" cellspacing="0" cellpadding="10">
         <tr>
-            <th>id</th>
-            <th>username</th>
-            <th>password</th>
+            <th>ID</th>
+            <th>USERNAME</th>
+            <th>PASSWORD</th>
         </tr>
         <?php foreach ($data['users'] as $user) : ?>
             <tr>
@@ -21,10 +24,10 @@
                 <td><?= $user['password']; ?></td>
                 <td>
                     <a href="<?= BASEURL; ?>/dashboardAdmin/hapus/<?= $user['id'] ?>" class="badge bg-danger float-end ms-1" onclick="return confirm('yakin?')">
-                        hapus
+                        HAPUS
                     </a>
                     <a href="<?= BASEURL; ?>/dashboardAdmin/ubah/<?= $user['id'] ?>" class="badge bg-success float-end ms-1 tampilModalUbah" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $user['id'] ?>">
-                        ubah
+                        EDIT
                     </a>
                 </td>
             </tr>
