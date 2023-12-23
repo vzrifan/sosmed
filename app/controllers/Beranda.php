@@ -51,6 +51,7 @@ class Beranda extends Controller
         $data['totalFollowers'] = $this->model('Followers_model')->getTotalFollowers()['COUNT(*)'];
         $data['totalFollowing'] = $this->model('Followers_model')->getTotalFollowing()['COUNT(*)'];
         $data['totalPost'] = $this->model('Posting_model')->getTotalUserPost()['COUNT(*)'];
+        $data['userPost'] = $this->model('Posting_model')->getUserPost();
         $this->view('templates/header', $data);
         $this->view('templates/navbar');
         $this->view('beranda/profile', $data);
@@ -62,5 +63,36 @@ class Beranda extends Controller
         $imagePath = $_SERVER['DOCUMENT_ROOT'] . '/sosmed/public/img/' . $_SESSION['id'] . '.jpg';
         $src = file_exists($imagePath) ? BASEURL . '/img/' . $_SESSION['id'] . '.jpg' : BASEURL . '/img/profile.jpg';
         return $src;
+    }
+
+    public function changePicture()
+    {
+        $this->prosesChangePicture();
+    }
+
+    public function prosesChangePicture()
+    {
+        if (isset($_FILES["pict"]) && $_FILES["pict"]["error"] == 0) {
+            $allowedTypes = [IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_GIF];
+            $detectedType = exif_imagetype($_FILES["pict"]["tmp_name"]);
+
+            if (in_array($detectedType, $allowedTypes)) {
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/sosmed/public/img/';
+                $uploadPath = $uploadDir . $_SESSION['id'] . '.jpg';
+
+                if (file_exists($uploadPath)) {
+                    unlink($uploadPath);
+                }
+
+                move_uploaded_file($_FILES["pict"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . '/sosmed/public/img/' . $_SESSION['id'] . '.jpg');
+                header('Location:' . BASEURL . '/beranda/profile');
+            } else {
+                echo "Error: Only JPEG, PNG, and GIF images are allowed.";
+                header('Location:' . BASEURL . '/beranda/profile');
+            }
+        } else {
+            echo "Error: Please choose a valid image file.";
+            header('Location:' . BASEURL . '/beranda/profile');
+        }
     }
 }

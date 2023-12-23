@@ -50,4 +50,16 @@ class Posting_model extends Controller
 
         return $this->db->single();
     }
+
+    public function getUserPost()
+    {
+        $query = "SELECT posting.*, users.username FROM `" . $this->table . "` JOIN users ON posting.id = users.id WHERE posting.id = :id";
+
+        $this->db->query($query);
+        $this->db->bind('id', $_SESSION['id']);
+
+        $this->db->execute();
+
+        return $this->db->resultSet();
+    }
 }
