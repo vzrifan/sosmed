@@ -38,4 +38,16 @@ class Posting_model extends Controller
 
         return $this->db->rowCount();
     }
+
+    public function getTotalUserPost()
+    {
+        $query = "SELECT COUNT(*) FROM posting WHERE id=:id";
+
+        $this->db->query($query);
+        $this->db->bind('id', $_SESSION['id']);
+
+        $this->db->execute();
+
+        return $this->db->single();
+    }
 }

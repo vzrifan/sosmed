@@ -22,7 +22,7 @@ class Beranda extends Controller
         header('Location:' . BASEURL . '/loginUser');
     }
 
-    public function cari()
+    public function search()
     {
         $data['judul'] = 'Daftar User';
         $data['users'] = $this->model('User_model')->cariDataUser();
@@ -41,5 +41,26 @@ class Beranda extends Controller
             header('Location: ' . BASEURL . '/beranda');
             exit;
         }
+    }
+
+    public function profile()
+    {
+        $data['judul'] = 'Profile';
+        $data['user'] = $this->model('User_model')->getUserById($_SESSION['id'])['username'];
+        $data['pict'] = $this->getImg();
+        $data['totalFollowers'] = $this->model('Followers_model')->getTotalFollowers()['COUNT(*)'];
+        $data['totalFollowing'] = $this->model('Followers_model')->getTotalFollowing()['COUNT(*)'];
+        $data['totalPost'] = $this->model('Posting_model')->getTotalUserPost()['COUNT(*)'];
+        $this->view('templates/header', $data);
+        $this->view('templates/navbar');
+        $this->view('beranda/profile', $data);
+        $this->view('templates/footer');
+    }
+
+    public function getImg()
+    {
+        $imagePath = $_SERVER['DOCUMENT_ROOT'] . '/sosmed/public/img/' . $_SESSION['id'] . '.jpg';
+        $src = file_exists($imagePath) ? BASEURL . '/img/' . $_SESSION['id'] . '.jpg' : BASEURL . '/img/profile.jpg';
+        return $src;
     }
 }

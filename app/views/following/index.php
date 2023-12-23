@@ -1,12 +1,7 @@
-<div class="container">
-    <div class="col">
-        <button type="button" class="btn btn-primary tombolTambahData" data-bs-toggle="modal" data-bs-target="#formModal">
-            tambah
-        </button>
-    </div>
+<div class="container mt-5">
     <div class="row">
         <div class="col">
-            <table>
+            <table class="table table-success table-striped">
                 <tr>
                     <th>Followers</th>
                 </tr>
@@ -18,7 +13,7 @@
             </table>
         </div>
         <div class="col">
-            <table>
+            <table class="table table-success table-striped">
                 <tr>
                     <th>Following</th>
                 </tr>

@@ -1,6 +1,3 @@
-<head>
-    <link rel="stylesheet" href=".../public/css/styles.css">
-</head>
 <div class="container">
     <form action="<?= BASEURL; ?>/dashboardAdmin/logout" method="post">
         <button type="submit" class="btn-primary">Logout</button>
@@ -11,11 +8,12 @@
             TAMBAH
         </button>
     </div>
-    <table border="3" cellspacing="0" cellpadding="10">
+    <table class="table table-primary table-striped">
         <tr>
             <th>ID</th>
             <th>USERNAME</th>
             <th>PASSWORD</th>
+            <th></th>
         </tr>
         <?php foreach ($data['users'] as $user) : ?>
             <tr>
