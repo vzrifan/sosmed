@@ -8,20 +8,44 @@
     <title>Sosmed</title>
     <style>
         body {
-            background-color: #f0f0f0f0;
+            background-color: pink;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .login-box {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-box input {
+            margin-bottom: 10px;
         }
     </style>
 </head>
 
 <body>
-    <div class="container mt-5">
-        <div class="row text-center">
-            <div class="col">
+    <div class="container">
+        <div class="login-box">
+            <div class="text-center mb-4">
+                <img class="mb-4" src="../public/img/icon.jpg" alt="" width="250" height="100">
+                <h1 class="h3 mb-3 font-weight-normal">Welcome to Zaply</h1>
+            </div>
+            <div class="text-center">
                 <a href="<?= BASEURL; ?>/loginUser">
                     <button type="button" class="btn btn-primary">Login user</button>
                 </a>
             </div>
-            <div class="col">
+            <div class="text-center mt-3">
                 <a href="<?= BASEURL; ?>/loginAdmin">
                     <button type="button" class="btn btn-primary">Login admin</button>
                 </a>
