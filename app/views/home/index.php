@@ -37,7 +37,7 @@
     <div class="container">
         <div class="login-box">
             <div class="text-center mb-4">
-                <img class="mb-4" src="../public/img/icon.jpg" alt="" width="250" height="100">
+                <img class="mb-4" src="../public/img/iconing.png" alt="" width="250" height="100">
                 <h1 class="h3 mb-3 font-weight-normal">Welcome to Zaply</h1>
             </div>
             <div class="text-center">
