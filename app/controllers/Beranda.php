@@ -9,7 +9,10 @@ class Beranda extends Controller
             header('Location:' . BASEURL . '/loginUser');
         }
         $data['judul'] = 'Beranda';
-        $data['posting'] = $this->model('Posting_model')->getAllPosting();
+        $data['userPost'] = $this->model('Posting_model')->getAllPosting();
+        $data['isFollowed'] = $this->model('Followers_model')->isFollowed();
+        $data['listFollower'] = $this->parseIsFollowed($data);
+        $this->getComment($data, $_SESSION['id']);
         $this->view('templates/header', $data);
         $this->view('templates/navbar');
         $this->view('beranda/index', $data);
@@ -47,22 +50,130 @@ class Beranda extends Controller
     {
         $data['judul'] = 'Profile';
         $data['user'] = $this->model('User_model')->getUserById($_SESSION['id'])['username'];
-        $data['pict'] = $this->getImg();
-        $data['totalFollowers'] = $this->model('Followers_model')->getTotalFollowers()['COUNT(*)'];
-        $data['totalFollowing'] = $this->model('Followers_model')->getTotalFollowing()['COUNT(*)'];
-        $data['totalPost'] = $this->model('Posting_model')->getTotalUserPost()['COUNT(*)'];
-        $data['userPost'] = $this->model('Posting_model')->getUserPost();
+        $data['pict'] = $this->getImg($_SESSION['id']);
+        $data['totalFollowers'] = $this->model('Followers_model')->getTotalFollowers($_SESSION['id'])['COUNT(*)'];
+        $data['totalFollowing'] = $this->model('Followers_model')->getTotalFollowing($_SESSION['id'])['COUNT(*)'];
+        $data['totalPost'] = $this->model('Posting_model')->getTotalUserPost($_SESSION['id'])['COUNT(*)'];
+        $data['userPost'] = $this->model('Posting_model')->getUserPost($_SESSION['id']);
+        $data['isFollowed'] = $this->model('Followers_model')->isFollowed();
+        $data['listFollower'] = $this->parseIsFollowed($data);
+        $this->getComment($data, $_SESSION['id']);
         $this->view('templates/header', $data);
         $this->view('templates/navbar');
         $this->view('beranda/profile', $data);
         $this->view('templates/footer');
     }
 
-    public function getImg()
+    public function otherProfile($id)
     {
-        $imagePath = $_SERVER['DOCUMENT_ROOT'] . '/sosmed/public/img/' . $_SESSION['id'] . '.jpg';
-        $src = file_exists($imagePath) ? BASEURL . '/img/' . $_SESSION['id'] . '.jpg' : BASEURL . '/img/profile.jpg';
-        return $src;
+        if ($id == $_SESSION['id']) {
+            $this->profile();
+            exit;
+        };
+        $data['judul'] = 'Profile';
+        $data['user'] = $this->model('User_model')->getUserById($id)['username'];
+        $data['pict'] = $this->getImg($id);
+        $data['totalFollowers'] = $this->model('Followers_model')->getTotalFollowers($id)['COUNT(*)'];
+        $data['totalFollowing'] = $this->model('Followers_model')->getTotalFollowing($id)['COUNT(*)'];
+        $data['totalPost'] = $this->model('Posting_model')->getTotalUserPost($id)['COUNT(*)'];
+        $data['userPost'] = $this->model('Posting_model')->getUserPost($id);
+        $data['isFollowed'] = $this->model('Followers_model')->isFollowed();
+        $data['listFollower'] = $this->parseIsFollowed($data);
+        $data['followBtn'] = in_array($id, $data['listFollower']) ? $this->createFollowBtn("Followed", $id) : $this->createFollowBtn("Follow", $id);
+        $this->getComment($data, $id);
+        $this->view('templates/header', $data);
+        $this->view('templates/navbar');
+        $this->view('beranda/otherProfile', $data);
+        $this->view('templates/footer');
+    }
+
+    public function comment($id)
+    {
+        $this->model('Comments_model')->insertComment($id, $_SESSION['id'], $_POST["comment"]);
+        header("Location:" . BASEURL . "/beranda");
+        exit;
+    }
+
+    public function getComment(&$data, $id_user)
+    {
+        foreach ($data['userPost'] as &$post) {
+            $id_posting = $post['id_posting'];
+            $comments = $this->model('comments_model')->getCommentsByPostingId($id_posting);
+            $hasLiked = $this->model('Likes_models')->hasUserLikedPost($_SESSION['id'], $id_posting);
+            $totalLikes = $this->model('Likes_models')->getTotalLikesForPost($id_posting);
+            $likeBtn = $this->createLikeButton($hasLiked, $id_posting, $id_user);
+
+            $post['comments'] = $comments;
+            $post['hasLiked'] = $hasLiked;
+            $post['totalLikes'] = $totalLikes;
+            $post['likeBtn'] = $likeBtn;
+        }
+    }
+
+    public function createLikeButton($val, $id, $id_user)
+    {
+        $icon = "<img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAgRJREFUSEvl1kuozVEUx/HPxUApAwNh4JWUx0CSmHiMjJTynKHIQJmYeOWRXEYmJEWmhJEMlJQZRRkokUiSiedM8vyvWv/b/x7n3PM/995z7sCenM7e+7++67f22mvtPmM0+saIayTgHZidjr/HTXyuK2S44J240gB5hyX4VAc+HPAq3MOEJoC9uNAN8Bw8xhR8w8r8fZGw3bg82uDJeIT5aXgLbuAoTuTcLLwdTfB43MXaNHoygfH3JebhCZbWgcaeumd8CbvS6C1swJ8ikxfjac4fRv9ogiNhzqfBZ1iW5xpTofxIp2FupngPDlTuZ1XAhwxlXJtyhCMLaqh8k04OXMFqqFfj/hBGIoMfNqzHnY0MrzuWZ4IOOuNDOJUWyixdg3CoVT4sxCaMa0M+lusHcabR2PEiYcoNZSSazdVVV90XiRgjBIXNQYq7BY6r+HMswOtwJ8EDla2aXN1SfBXb8KOo41PxtRehnoSPRUJNzLa5uTz4biuOunAxYeuL4nO7V+AHxfmuQBSfaUV9/90LcLTQ1wk6i/3V+9XNUJ/O8hu8KKvPewEOQVHTZ7Rql1XF1YZe9t140G1PT8u5OpVrUaWj7cO5xo+q4K24VsdqB3u+Yzq+DAWOQn+9aOwbOzDcbmtTta06ztzi6TqzncU267/wCvHebjrqPn1G6Me/n/9/4L/NLWMf7q05RAAAAABJRU5ErkJggg=='/>";
+        if ($val) {
+            $url = BASEURL . "/beranda/unlike/" . $id . "/" . $id_user;
+            return "<a href='$url'><button class='btn btn-success'>" . $icon . "</button></a>";
+        }
+        $url = BASEURL . "/beranda/like/" . $id . "/" . $id_user;
+        return "<a href='$url'><button class='btn btn-secondary'>" . $icon . "</button></a>";
+    }
+
+    public function like($id_posting, $id_user)
+    {
+        $this->model('Likes_models')->likePost($id_posting);
+        if (intval($id_user) == $_SESSION['id']) {
+            header("Location:" . BASEURL . "/beranda");
+            exit;
+        }
+        header("Location:" . BASEURL . "/beranda/otherProfile/" . $id_user);
+        exit;
+    }
+
+    public function unlike($id_posting, $id_user)
+    {
+        $this->model('Likes_models')->unlikePost($id_posting);
+        if (intval($id_user) == $_SESSION['id']) {
+            header("Location:" . BASEURL . "/beranda");
+            exit;
+        }
+        header("Location:" . BASEURL . "/beranda/otherProfile/" . $id_user);
+        exit;
+    }
+
+    public function follow($id)
+    {
+        $this->model('Followers_model')->followUser($id);
+        header("Location:" . BASEURL . "/beranda/otherProfile/" . $id);
+    }
+
+    public function unfollow($id)
+    {
+        $this->model('Followers_model')->unfollowUser($id);
+        header("Location:" . BASEURL . "/beranda/otherProfile/" . $id);
+    }
+
+    public function createFollowBtn($val, $id)
+    {
+        if ($val == "Follow") {
+            $url = BASEURL . "/beranda/follow/" . $id;
+            return "<a href='$url'><button class='btn btn-primary'>" . $val . "</button></a>";
+        }
+        $url = BASEURL . "/beranda/unfollow/" . $id;
+        return "<a href='$url'><button class='btn btn-success'>" . $val . "</button></a>";
+    }
+
+    public function parseIsFollowed($data)
+    {
+        $numericValues = [];
+        foreach ($data['isFollowed'] as $subArray) {
+            if (isset($subArray['following_id'])) {
+                $numericValues[] = $subArray['following_id'];
+            }
+        }
+        return $numericValues;
     }
 
     public function changePicture()
@@ -94,5 +205,12 @@ class Beranda extends Controller
             echo "Error: Please choose a valid image file.";
             header('Location:' . BASEURL . '/beranda/profile');
         }
+    }
+
+    public function getImg($id)
+    {
+        $imagePath = $_SERVER['DOCUMENT_ROOT'] . '/sosmed/public/img/' . $id . '.jpg';
+        $src = file_exists($imagePath) ? BASEURL . '/img/' . $id . '.jpg' : BASEURL . '/img/profile.jpg';
+        return $src;
     }
 }

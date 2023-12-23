@@ -37,27 +37,65 @@ class Followers_model
         return $this->db->single();
     }
 
-    public function getTotalFollowers()
+    public function getTotalFollowers($id)
     {
         $query = "SELECT COUNT(*) FROM followers WHERE following_id=:id";
 
         $this->db->query($query);
-        $this->db->bind('id', $_SESSION['id']);
+        $this->db->bind('id', $id);
 
         $this->db->execute();
 
         return $this->db->single();
     }
 
-    public function getTotalFollowing()
+    public function getTotalFollowing($id)
     {
         $query = "SELECT COUNT(*) FROM followers WHERE follower_id=:id";
+
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+
+        $this->db->execute();
+
+        return $this->db->single();
+    }
+
+    public function isFollowed()
+    {
+        $query = "SELECT following_id FROM followers WHERE follower_id=:id";
 
         $this->db->query($query);
         $this->db->bind('id', $_SESSION['id']);
 
         $this->db->execute();
 
-        return $this->db->single();
+        return $this->db->resultSet();
+    }
+
+    public function followUser($id)
+    {
+        $query = "INSERT INTO followers VALUES ('', :following_id, :follower_id)";
+
+        $this->db->query($query);
+        $this->db->bind('following_id', $id);
+        $this->db->bind('follower_id', $_SESSION['id']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+    public function unfollowUser($id)
+    {
+        $query = "DELETE from followers where following_id=:following_id AND follower_id=:follower_id";
+
+        $this->db->query($query);
+        $this->db->bind('following_id', $id);
+        $this->db->bind('follower_id', $_SESSION['id']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
     }
 }

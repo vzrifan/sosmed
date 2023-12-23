@@ -64,7 +64,7 @@ class User_model
 
     public function cariDataUser()
     {
-        $keyword = $_POST['keyword'];
+        $keyword = isset($_POST['keyword']) ? $_POST['keyword'] : "";
         $query = "SELECT * FROM users WHERE username LIKE :keyword";
         $this->db->query($query);
         $this->db->bind('keyword', "%$keyword%");
