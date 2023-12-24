@@ -97,6 +97,7 @@
     </style>
 </head>
 
+
 <body>
     <div class="container">
         <div class="external-icon">
@@ -109,10 +110,20 @@
             <form method="post" action="<?= BASEURL; ?>/loginUser/proccessLogin">
                 <div class="login-title">Login to your account</div>
                 <div class="form-outline mb-2">
-                    <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
+                    <div class="input-group">
+                        <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
+                        <div class="input-group-append">
+                            <span class="input-group-text">👤</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-outline mb-2">
-                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                    <div class="input-group">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                        <div class="input-group-append">
+                            <span class="input-group-text">🔒</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-outline mb-4">
                     <label for="captcha"><?= $data['captchaText'] ?></label>
