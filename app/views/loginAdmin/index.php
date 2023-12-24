@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="../public/img/icon.ico">
+    <link rel="icon" type="image/png" href="../public/img/icon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Sosmed</title>
     <style>
@@ -97,10 +97,6 @@
                 <div class="form-outline mb-2">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" class="form-control" required>
-                </div>
-                <div class="form-outline mb-4">
-                    <label for="captcha"><?= $data['captchaText'] ?></label>
-                    <input type="text" id="captcha" name="captcha" class="form-control" required>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block mb-2">Submit</button>
             </form>
