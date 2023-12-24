@@ -17,6 +17,19 @@ class DashboardAdmin extends Controller
         header('Location:' . BASEURL . '/loginAdmin');
     }
 
+    public function tambah()
+    {
+        $data['username'] = $_POST['username'];
+        $data['password'] = $_POST['password'];
+        if ($this->model('User_model')->tambahDataUser($data) > 0) {
+            header('Location: ' . BASEURL . '/dashboardAdmin');
+            exit;
+        } else {
+            header('Location: ' . BASEURL . '/dashboardAdmin');
+            exit;
+        }
+    }
+
     public function hapus($id)
     {
         if ($this->model('User_model')->hapusDataUser($id) > 0) {

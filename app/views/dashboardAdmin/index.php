@@ -70,13 +70,13 @@
                     <h5 class="modal-title" id="formModalLabel">Tambah</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="<?= BASEURL; ?>/beranda/posting" method="post">
+                <form action="<?= BASEURL; ?>/dashboardAdmin/tambah" method="post">
                     <div class="modal-body">
                         <!-- Hidden input to store user ID -->
                         <input type="hidden" id="userIdInput" name="userId">
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username" name="Username">
+                            <input type="text" class="form-control" id="username" name="username">
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>

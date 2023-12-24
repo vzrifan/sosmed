@@ -105,7 +105,7 @@
         </div>
         <div class="login-box">
             <div class="col-lg-6">
-                <?php Flasher::flash() ?>
+                <?php Flasher::flash(); ?>
             </div>
             <form method="post" action="<?= BASEURL; ?>/loginUser/proccessLogin">
                 <div class="login-title">Login to your account</div>

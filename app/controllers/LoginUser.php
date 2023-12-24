@@ -17,6 +17,9 @@ class LoginUser extends Controller
         include_once("/xampp/htdocs/sosmed/app/config/configGoogle.php");
         include_once("/xampp/htdocs/sosmed/app/includes/functions.php");
 
+        var_dump($_REQUEST);
+        // die;
+
         if (isset($_REQUEST['code'])) {
             $gClient->authenticate();
             $_SESSION['token'] = $gClient->getAccessToken();
@@ -33,7 +36,9 @@ class LoginUser extends Controller
             $gUser = new Users();
             $gUser->checkUser('google', $userProfile['id'], $userProfile['given_name'], $userProfile['family_name'], $userProfile['email'], $userProfile['gender'], $userProfile['locale'], $userProfile['link'], $userProfile['picture']);
             $_SESSION['google_data'] = $userProfile; // Storing Google User Data in Session
-            header("location: home.php");
+            var_dump($gUser);
+            die;
+            header("Location: ../app/views/beranda/index.php");
             $_SESSION['token'] = $gClient->getAccessToken();
         } else {
             $authUrl = $gClient->createAuthUrl();
