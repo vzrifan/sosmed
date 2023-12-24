@@ -39,7 +39,8 @@
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 1rem; /* Adjust the margin-top to create space between the boxes */
+            margin-top: 1rem;
+            /* Adjust the margin-top to create space between the boxes */
         }
 
         .form-outline {
@@ -60,7 +61,8 @@
             background-color: #fff;
             background-clip: padding-box;
             border: 1px solid #ced4da;
-            border-radius: 20px; /* Modified to 20px */
+            border-radius: 20px;
+            /* Modified to 20px */
             transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         }
 
@@ -118,9 +120,9 @@
                     <i class='bx bxs-lock-alt position-absolute top-50 translate-middle-y' style='right: 10px;'></i>
                 </div>
                 <div class="form-outline mb-4 position-relative">
-                    <label for="captcha"><?= $data['captchaText'] ?></label>
+                    <label for="captcha"><?= $data['captchaText']; ?></label>
                     <input type="text" id="captcha" name="captcha" class="form-control" placeholder="Your answer" required>
-                    <i class='bx bxs-pencil position-absolute top-50 start-0translate-middle-y' style='right: 10px;'></i>
+                    <i class='bx bxs-pencil position-absolute top-50 start-0translate-middle-y mt-2' style='right: 10px;'></i>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

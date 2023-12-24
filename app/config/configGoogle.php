@@ -2,9 +2,9 @@
 include_once("src/Google_Client.php");
 include_once("src/contrib/Google_Oauth2Service.php");
 ######### edit details ##########
-$clientId = '793251624425-p6bugrmle1qklqudca7nsok6nli1v49s.apps.googleusercontent.com'; //Google CLIENT ID
-$clientSecret = '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'; //Google CLIENT SECRET
-$redirectUrl = 'http://localhost/sosmed';  //return url (url to script)
+$clientId = '33616300529-gf74fkivchabbohpag28forvielcdbjp.apps.googleusercontent.com'; //Google CLIENT ID
+$clientSecret = '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'; //Google CLIENT SECRET
+$redirectUrl = 'http://localhost/sosmed/public';  //return url (url to script)
 $homeUrl = 'http://localhost';  //return to home
 
 ##################################

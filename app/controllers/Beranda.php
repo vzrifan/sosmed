@@ -21,7 +21,12 @@ class Beranda extends Controller
 
     public function logout()
     {
+        include_once("/xampp/htdocs/sosmed/app/config/configGoogle.php");
         unset($_SESSION['id']);
+        unset($_SESSION['token']);
+        unset($_SESSION['google_data']); //Google session data unset
+        $gClient->revokeToken();
+        session_destroy();
         header('Location:' . BASEURL . '/loginUser');
     }
 
