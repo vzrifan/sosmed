@@ -41,7 +41,8 @@
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 1rem; /* Adjust the margin-top to create space between the boxes */
+            margin-top: 1rem;
+            /* Adjust the margin-top to create space between the boxes */
         }
 
         .form-outline {
@@ -86,7 +87,6 @@
             margin-bottom: 1rem;
             text-align: center;
         }
-
     </style>
 </head>
 
