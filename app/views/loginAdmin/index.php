@@ -125,7 +125,7 @@
                 <div class="form-outline mb-4 position-relative">
                     <label for="captcha"><?= $data['captchaText'] ?></label>
                     <input type="text" id="captcha" name="captcha" class="form-control" placeholder="Your answer" required>
-                    <i class='bx bxs-pencil position-absolute top-50 start-0translate-middle-y' style='right: 10px;'></i>
+                    <i class='bx bxs-pencil position-absolute top-50 start-0translate-middle-y mt-2' style='right: 10px;'></i>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block mb-2">Submit</button>
             </form>
