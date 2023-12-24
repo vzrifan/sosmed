@@ -109,25 +109,18 @@
             </div>
             <form method="post" action="<?= BASEURL; ?>/loginUser/proccessLogin">
                 <div class="login-title">Login to your account</div>
-                <div class="form-outline mb-2">
-                    <div class="input-group">
-                        <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
-                        <div class="input-group-append">
-                            <span class="input-group-text">👤</span>
-                        </div>
-                    </div>
+                <div class="form-outline mb-2 position-relative">
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
+                    <i class='bx bxs-user position-absolute top-50 translate-middle-y' style='right: 10px;'></i>
                 </div>
-                <div class="form-outline mb-2">
-                    <div class="input-group">
-                        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
-                        <div class="input-group-append">
-                            <span class="input-group-text">🔒</span>
-                        </div>
-                    </div>
+                <div class="form-outline mb-2 position-relative">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                    <i class='bx bxs-lock-alt position-absolute top-50 translate-middle-y' style='right: 10px;'></i>
                 </div>
-                <div class="form-outline mb-4">
+                <div class="form-outline mb-4 position-relative">
                     <label for="captcha"><?= $data['captchaText'] ?></label>
                     <input type="text" id="captcha" name="captcha" class="form-control" placeholder="Your answer" required>
+                    <i class='bx bxs-pencil position-absolute top-50 start-0translate-middle-y' style='right: 10px;'></i>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
