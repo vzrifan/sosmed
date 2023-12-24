@@ -98,6 +98,10 @@
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" class="form-control" required>
                 </div>
+                <div class="form-outline mb-4">
+                    <label for="captcha"><?= $data['captchaText'] ?></label>
+                    <input type="text" id="captcha" name="captcha" class="form-control" required>
+                </div>
                 <button type="submit" class="btn btn-primary btn-block mb-2">Submit</button>
             </form>
             <div class="text-center mt-2">
