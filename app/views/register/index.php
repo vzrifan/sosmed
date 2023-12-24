@@ -33,7 +33,6 @@
             height: auto;
         }
 
-        .login-box,
         .register-box {
             max-width: 400px;
             width: 100%;
@@ -41,7 +40,7 @@
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 1rem; /* Adjust the margin-top to create space between the boxes */
+            margin-top: 1rem;
         }
 
         .form-outline {
@@ -62,7 +61,7 @@
             background-color: #fff;
             background-clip: padding-box;
             border: 1px solid #ced4da;
-            border-radius: 0.25rem;
+            border-radius: 20px;
             transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         }
 
@@ -73,6 +72,16 @@
 
         .btn-primary {
             width: 100%;
+            border-radius: 20px;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: white;
+            color: black;
         }
 
         .register-link {
@@ -99,23 +108,32 @@
                 <?php Flasher::flash() ?>
             </div>
             <form method="post" action="<?= BASEURL; ?>/register/tambah">
-            <div class="login-title">Register Your Account</div>
-                <div class="form-outline mb-2">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" class="form-control" required>
+                <div class="login-title">Register Your Account</div>
+
+                <div class="input-group form-outline mb-2">
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">👤</span>
+                    </div>
                 </div>
-                <div class="form-outline mb-2">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" class="form-control" required>
+
+                <div class="input-group form-outline mb-2">
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">🔒</span>
+                    </div>
                 </div>
+
                 <div class="form-outline mb-4">
                     <label for="captcha"><?= $data['captchaText'] ?></label>
-                    <input type="text" id="captcha" name="captcha" class="form-control" required>
+                    <input type="text" id="captcha" name="captcha" class="form-control" placeholder="Your answer" required> 
                 </div>
+
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+
             <div class="register-link">
-                already have an account? <a href="<?= BASEURL; ?>/loginUser">login</a>
+                Already have an account? <a href="<?= BASEURL; ?>/loginUser">login</a>
             </div>
         </div>
     </div>

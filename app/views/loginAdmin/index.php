@@ -61,7 +61,7 @@
             background-color: #fff;
             background-clip: padding-box;
             border: 1px solid #ced4da;
-            border-radius: 0.25rem;
+            border-radius: 20px; /* Modified to 20px */
             transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         }
 
@@ -70,14 +70,38 @@
             box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
         }
 
+        .btn-primary {
+            width: 100%;
+            border-radius: 20px;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: white;
+            color: black;
+        }
+
         .login-title {
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 1rem;
             text-align: center;
         }
+
+        .mt-2 {
+            margin-top: 2rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
     </style>
 </head>
+
 
 <body>
     <div class="container login-container">
@@ -91,16 +115,24 @@
             <form method="post" action="<?= BASEURL; ?>/loginAdmin/proccessLogin">
                 <div class="login-title">Login Admin</div>
                 <div class="form-outline mb-2">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" class="form-control" required>
+                    <div class="input-group">
+                        <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
+                        <div class="input-group-append">
+                            <span class="input-group-text">👤</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-outline mb-2">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" class="form-control" required>
+                    <div class="input-group">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                        <div class="input-group-append">
+                            <span class="input-group-text">🔒</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-outline mb-4">
                     <label for="captcha"><?= $data['captchaText'] ?></label>
-                    <input type="text" id="captcha" name="captcha" class="form-control" required>
+                    <input type="text" id="captcha" name="captcha" class="form-control" placeholder="Your answer" required>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block mb-2">Submit</button>
             </form>

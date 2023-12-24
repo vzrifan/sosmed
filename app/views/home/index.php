@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../public/img/icon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Sosmed</title>
+    <title>Zaply</title>
     <style>
         body {
             background-color: pink;
@@ -24,12 +24,27 @@
             width: 100%;
             padding: 20px;
             background: #fff;
-            border-radius: 8px;
+            border-radius: 20px; 
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .login-box input {
             margin-bottom: 10px;
+        }
+
+        .btn-primary {
+            background-color: black;
+            color: white;
+            border-radius: 50px;
+            padding: 12px 24px;
+            border: 1px solid white;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Hover effect */
+        .btn-primary:hover {
+            background-color: white;
+            color: black;
         }
     </style>
 </head>
