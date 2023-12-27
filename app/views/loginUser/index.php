@@ -18,8 +18,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            margin-top: 5rem;
+            height: 80vh;
         }
 
         .external-icon {
@@ -40,7 +39,6 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-top: 1rem;
-            /* Adjust the margin-top to create space between the boxes */
         }
 
         .form-outline {
@@ -62,7 +60,6 @@
             background-clip: padding-box;
             border: 1px solid #ced4da;
             border-radius: 20px;
-            /* Modified to 20px */
             transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         }
 

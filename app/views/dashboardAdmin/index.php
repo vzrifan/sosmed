@@ -53,7 +53,7 @@
                         <a href="<?= BASEURL; ?>/dashboardAdmin/hapus/<?= $user['id'] ?>" class="badge bg-danger float-end ms-1" onclick="return confirm('yakin?')">
                             HAPUS
                         </a>
-                        <a href="<?= BASEURL; ?>/dashboardAdmin/ubah/<?= $user['id'] ?>" class="badge bg-success float-end ms-1 tampilModalUbah" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $user['id'] ?>">
+                        <a href="#" class="badge bg-success float-end ms-1 btnEdit" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $user['id'] ?>" data-action="<?= BASEURL; ?>/dashboardAdmin/ubah/<?= $user['id'] ?>">
                             EDIT
                         </a>
                     </td>
@@ -91,7 +91,28 @@
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-rbs5gX8S+a1GMpCv6PxBy62sUEK5tGTf7geUJCCz6oBE8eH0N3QbGopzgW8kgz6W" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $('.btnEdit').on('click', function() {
+                var userId = $(this).data('id');
+                var action = $(this).data('action');
+                var username = $(this).closest('tr').find('td:eq(1)').text(); // Adjust the index based on your table structure
+                var password = $(this).closest('tr').find('td:eq(2)').text(); // Adjust the index based on your table structure
+
+                $('#userIdInput').val(userId);
+                $('#username').val(username);
+                $('#password').val(password);
+
+                // Update modal title, button label, and form action
+                $('#formModalLabel').text('Ubah');
+                $('.modal-footer button[type="submit"]').text('Ubah');
+                $('form').attr('action', action);
+            });
+        });
+    </script>
 </body>
 
 </html>

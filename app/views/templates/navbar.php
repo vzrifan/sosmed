@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,7 @@
                 </li>
                 <li class="nav-item">
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-secondary nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAASxJREFUSEvt1tEqBkEUwPHfd03xBCIvoOSah5BrF4q8BB5CSinXvAT3ilsu8AqUXLKjb7W+vt0dO+NbytQ2NTPn/M/Zc2bOGehpDHriigFPYR0LCUY+4AyvpY428CyusJgALUVvsYyXsNAG3sVhBmipYgsnMeB97A2l2oxssu9tuHlQzEFnq8e/GryJeTwW82mN2z/i8QVWcYm1PwUeF8+YGCd7HAsOMQ1fOZYwgyfcVNZDvMuYN8Y4Flw913SFPq9OcSWzgHvzeNTLicX4H5z8csVmdZdilSWrJwLewVEXUo3MNo5Hy+K4Xx06kOth9Unl32EFzzHgcGYaG5hLIN/jvK7niikICeyvotV2pjdwrkSK6s2qh3Il0rfBuRLpo4tsG1HWtSnpst8b+B0czWkf7tIMXwAAAABJRU5ErkJggg==" />
                     </button>
                 </li>
@@ -35,9 +35,9 @@
                     </div>
                 </li>
                 <li class="nav-item ms-5">
-                    <!-- <form action="<?= BASEURL; ?>/beranda/logout" method="post">
-                        <button type="submit" class="btn-primary">Logout</button>
-                    </form> -->
+                    <a class="nav-link" href="<?= BASEURL; ?>/beranda/settings"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAA0JJREFUSEvFllnITlEUhp8/Y0SmTCFXEjfGosiU4UIuZM7wI+JG5iEuuJA5uVAoU8ksUTJPSZmluJELkVlmMoX9am3t//znfOecr/Stm+87e1jv3ut919qrjBJZWYlwKQa4BTAUaGCHfgMcAp7kuURe4O7AOaBmBOQT0Au4lRU8L/B+YHiC813AuP8BXA24AnQCLgK9DeRCcFtF5HsW8KQbi8cJwG9gO9AF2AY0MqcKdz/7fxboa/9fAROB20C5je0AnkYPEwfcBLgD6Ff2FqgH/4T4DJgF7LP5McBaoJl967DvgPr2/QjoDLwOweOAk3j8AMy3m/+I3EA0TAVWAbVjQq1DjioEPAA4aQu0WIJZAbywED5O4a81sNUoWQyMBUbanoHAKb8/emNx18eF8j3QFngeAzTMHWR6wKs43ggcjlnbFLgP1AHOAP2TgO8B7QCFciGw3gTm168B5ibceqnTwbJgTpeSFhT+qqabDknA4mF3ICQBiVfZiEBQX90BpQU/7guKqDpt4+uA2fb/l4X8YBKwxrsBCl8t49gXBVWljkaD0uuBORElN2299DHIxveYoD4bLdfSVK15nVChWg4ssQ3fgOrAJuM49KMcV/6qbje0CYVY0foSp/SkAqJQ1nA1eSWwyBypHitVNjvRTYvwvMU9ElOAj0Bdm1sNzHOa0D6Jq4LFAYeh3guMth2XnDJ7WHFQyB/aeBvgugGGFe0AoAzIFGrlnLjxBwrFNcRxfCS4vRxXMdF5cYlfXwdUzebYelUzPS56Pv9a9MZ3gfaWTuJnQySdfPiikdP3AicwzYe+Z9qY0kn1Ww9MLLAv+GkFZIZTfk/zcdQEdzzmNGEBCRVf6cYqayfMgS+ZKn3iSapNK5kt7TWTCJURYckMczy29Sn2kZhkYfWqDgOQ+khocWPjo7ntVG7KmXiSqbeSCC/bt0Iu9fv1Py2twmexK/AyPEmhRmC8CWunNXYqEnIgOwYMtv/i1lerq46OyZZyaiRkaiT0hlewPD2X1t4o0PqobOpgSp1UywMsZwqpf1+jzpX/6kYyWV5gVbXzCe2t3nFFJJPlBZbTVtbQqw+TSXx67io1dIVOUAxwphulLSoZ8B+vSbAfRGyF2gAAAABJRU5ErkJggg==" /></a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="<?= BASEURL; ?>/beranda/logout"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAW1JREFUSEvtlrsuRUEUhr8jHkAUElFqEbXC5QHwEhrR8BoSUVGIzoO4NCQiwTMIEQpaBPMne5Ix9hzrzOzYpziT7GbPzPrWZdbM36Gl0WmJS9+BR4AZYKgwI5/ALfAS26mLeAvYBoYLoX77uwNvAvuhvRg8Adw1BAzNfDnwGPDsf8bgeeC0mlTk14VOzAK7lY0F4CwFXgSOq8kl4KQQnLQXRzwAp1I9B0y67+iPUphTrf7VgdDQwfrVf9WcN3gAbAAfCQfMYOtZCg1eACvOgaeazWZwGHE3J8I20boHYBW4jDaZweFCa/R+3Zu7fNaiuv8LWHVeBw4Dj83g3FTrKlSdz3NTbU1vGMkVsFzVOd6fFbGlndTHqqvqWzfMYOuVqQtkClAfdxuNg3NK8uPRGTwSrQmBceDeWsAe1kn6yPZjSoHov4TZTgMK0zMk9iSj9kJHU7p6FJiGYt0teXvjwK9xdvpO0PdQvrylrUX8DZOyaB9ap/VCAAAAAElFTkSuQmCC" /></a>
                 </li>
             </ul>
@@ -53,12 +53,16 @@
                 <h5 class="modal-title" id="exampleModalLabel">Kirim postingan</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= BASEURL; ?>/beranda/posting" method="post">
-                <div class="modal-body">
+            <form action="<?= BASEURL; ?>/beranda/posting" method="post" enctype="multipart/form-data">
+                <div class=" modal-body">
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Content</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content"></textarea>
                     </div>
+                </div>
+                <div class="mb-3 p-3">
+                    <label for="pict" class="form-label">Image</label>
+                    <input type="file" class="form-control" id="pict" name="pict">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

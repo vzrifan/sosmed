@@ -2,7 +2,7 @@
     <div class="row justify-content-center mt-2">
         <div class="col-2 text-center">
             <a href="#" data-bs-toggle="modal" data-bs-target="#formModal">
-                <img src="<?= $data['pict'] ?>" , alt="Photo" , height="200" , class="rounded-circle shadow"><br><br>
+                <img src="<?= $data['pict'] ?>" , alt="Photo" , width="180" , class="rounded-circle shadow"><br><br>
             </a>
             <?= $data['user']; ?>
         </div>
@@ -26,9 +26,15 @@
                     <div class="card-body">
                         <h5 class="card-title"><?= $posting['username']; ?></h5>
                         <p class="card-text"><small class="text-muted"><?= $posting['post_date']; ?></small></p><br>
-                        <!-- <img src="..." class="card-img-top" alt="..."> -->
                         <p class="card-text"><?= $posting['content']; ?></p><br>
-                        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                        <?php
+                        $imagePath = '/sosmed/public/img/' . str_replace(array("-", ":", " "), "", $posting['post_date']) . '.jpg';
+
+                        if (file_exists($_SERVER['DOCUMENT_ROOT'] . $imagePath)) {
+                            echo '<img src="' . $imagePath . '" class="card-img-top mx-auto d-block" alt="photo" height="300" style="width: auto;">';
+                        }
+
+                        ?>
                         <?= $posting['likeBtn']; ?>
                         <p>Total Likes: <?= $posting['totalLikes']; ?></p>
                     </div>

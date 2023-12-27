@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Des 2023 pada 17.14
+-- Waktu pembuatan: 27 Des 2023 pada 20.26
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -67,7 +67,8 @@ INSERT INTO `comments` (`id_comment`, `id_posting`, `id_user`, `comment_text`, `
 (8, 10, 2, 'wkwkwk', '2023-12-23 20:42:56'),
 (9, 8, 2, 'okk', '2023-12-23 20:44:07'),
 (10, 10, 2, 'okk', '2023-12-23 20:45:13'),
-(11, 11, 7, 'gg', '2023-12-24 14:42:29');
+(11, 11, 7, 'gg', '2023-12-24 14:42:29'),
+(12, 38, 2, 'omg', '2023-12-27 18:32:41');
 
 -- --------------------------------------------------------
 
@@ -94,7 +95,9 @@ INSERT INTO `followers` (`followers_id`, `following_id`, `follower_id`) VALUES
 (8, 6, 2),
 (14, 1, 2),
 (15, 1, 7),
-(16, 2, 7);
+(16, 2, 7),
+(17, 15, 7),
+(18, 13, 7);
 
 -- --------------------------------------------------------
 
@@ -121,10 +124,9 @@ INSERT INTO `likes` (`id_like`, `id_user`, `id_posting`, `created_at`) VALUES
 (27, 2, 3, '2023-12-23 20:36:30'),
 (28, 2, 8, '2023-12-23 20:36:45'),
 (34, 2, 4, '2023-12-23 20:45:09'),
-(40, 13, 12, '2023-12-24 18:49:22'),
-(50, 7, 12, '2023-12-25 03:34:21'),
 (51, 7, 11, '2023-12-25 03:35:14'),
-(52, 13, 11, '2023-12-25 03:36:33');
+(53, 7, 12, '2023-12-27 16:50:46'),
+(56, 2, 38, '2023-12-27 18:32:33');
 
 -- --------------------------------------------------------
 
@@ -154,7 +156,9 @@ INSERT INTO `posting` (`id_posting`, `id`, `content`, `post_date`) VALUES
 (9, 2, 'Integer vel purus id leo congue egestas. Morbi nec metus vitae lectus bibendum auctor.', '2023-12-23 18:01:37'),
 (10, 2, 'Praesent vel eros quis mauris blandit facilisis. Proin vel lectus vel purus finibus fermentum a sit amet nisl.', '2023-12-23 18:12:55'),
 (11, 7, 'test post\r\n\r\ndone', '2023-12-23 20:59:59'),
-(12, 6, NULL, '2023-12-24 15:27:51');
+(12, 6, NULL, '2023-12-24 15:27:51'),
+(37, 2, 'post image', '2023-12-27 12:13:00'),
+(38, 2, 'post image 2', '2023-12-27 12:26:57');
 
 -- --------------------------------------------------------
 
@@ -174,11 +178,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`) VALUES
 (1, 'user1', '$2y$10$Bwk8m9uCSyzwQJD6CpkKZeOebo.hTeb6yIn6EIGJ5.AuLxZqOOKk6'),
-(2, 'user2', '$2y$10$HAjhjwUN0VJJXZjxEg5lY.J1Zy//MuGQZwNYkj6HLuxhdTpYYozWm'),
+(2, 'user2', '$2y$10$QhA0eTnDQA3OBg6Td10yi.jlWTVvMXWA7KrwO/rrf3SoAJWJ1LwZe'),
 (6, 'admin', '$2y$10$U//YocU6P1vxgp0/P/Gd6.hRtQs9Yq4it9jytnsoCbE.IYWq43D6i'),
 (7, 'vzrifan', '$2y$10$9U0Vmrpb/WUGb/lLDfM8QuonY6DRTXAp.0d1XWkmAoFG42zXE00z.'),
-(9, 'user4', '$2y$10$DEMRVhzGRRJQjdoHecyXyeznfvmPjByhnFi703vu9RIsthj7xyygO'),
-(13, 'Rifan Prayoga', '$2y$10$KFTfucZA3l9vtOmlCPGDN.OlxylwAtRTB343OslkNsSCrt..1qpJm'),
 (14, 'Pride.', '$2y$10$GPu9r09g2xnLsPg3TGS5nebV7opWrFSiMDFzn3e7NvfpkT8x/xGfm'),
 (15, 'Rifan Prayoga', '$2y$10$czj84Snjsd0IeNl1kG9ZG.rT9Xf/cwVRmce/v7M6ENtblxB4CMfJW'),
 (16, 'user5', '$2y$10$IHbs7JKwJSxCECF/p9zkwOE.5ot0JPxI2CnXP6L8omq.VBwHhGXjy');
@@ -210,7 +212,7 @@ CREATE TABLE `users2` (
 
 INSERT INTO `users2` (`id`, `oauth_provider`, `oauth_uid`, `fname`, `lname`, `email`, `gender`, `locale`, `gpluslink`, `picture`, `created`, `modified`) VALUES
 (28, 'google', '109040169539239694400', 'Pride.', '', 'xyrifan@gmail.com', '', 'id', '', 'https://lh3.googleusercontent.com/a/ACg8ocIneeqfbvYJ7L5idKN1A079-QBrUSrNLbkjiu3OqoDL0A=s96-c', '2023-12-24 19:50:02', '2023-12-24 19:50:02'),
-(29, 'google', '103224427178748851521', 'Rifan Prayoga', 'Manik', 'vzrifan@gmail.com', '', 'id', '', 'https://lh3.googleusercontent.com/a/ACg8ocL1LtoRpMJubZQQfFzEH0v5LFgX_CbPh8eQ_ooEmzcNVA=s96-c', '2023-12-24 19:50:12', '2023-12-25 04:36:30');
+(29, 'google', '103224427178748851521', 'Rifan Prayoga', 'Manik', 'vzrifan@gmail.com', '', 'id', '', 'https://lh3.googleusercontent.com/a/ACg8ocL1LtoRpMJubZQQfFzEH0v5LFgX_CbPh8eQ_ooEmzcNVA=s96-c', '2023-12-24 19:50:12', '2023-12-27 20:09:57');
 
 --
 -- Indexes for dumped tables
@@ -277,31 +279,31 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `followers`
 --
 ALTER TABLE `followers`
-  MODIFY `followers_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `followers_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `likes`
 --
 ALTER TABLE `likes`
-  MODIFY `id_like` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id_like` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT untuk tabel `posting`
 --
 ALTER TABLE `posting`
-  MODIFY `id_posting` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_posting` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `users2`
@@ -324,7 +326,7 @@ ALTER TABLE `comments`
 -- Ketidakleluasaan untuk tabel `likes`
 --
 ALTER TABLE `likes`
-  ADD CONSTRAINT `likes_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `likes_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `likes_ibfk_2` FOREIGN KEY (`id_posting`) REFERENCES `posting` (`id_posting`);
 
 --

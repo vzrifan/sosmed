@@ -27,14 +27,15 @@ class Posting_model extends Controller
         return $this->db->single();
     }
 
-    public function tambahDataposting($data)
+    public function tambahDataposting($data, $currentDate)
     {
-        $query = "INSERT INTO posting VALUES ('', :id, :content, CURRENT_TIMESTAMP)";
+        $query = "INSERT INTO posting VALUES ('', :id, :content, :curDate)";
 
         $this->db->query($query);
         $this->db->bind('id', $_SESSION['id']);
         $this->db->bind('content', $data['content']);
-
+        $this->db->bind('curDate', $currentDate);
+        
         $this->db->execute();
 
         return $this->db->rowCount();

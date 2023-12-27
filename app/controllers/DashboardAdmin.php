@@ -43,6 +43,20 @@ class DashboardAdmin extends Controller
         }
     }
 
+    public function ubah($id)
+    {
+        $data['username'] = $_POST['username'];
+        $data['password'] = $_POST['password'];
+        $data['id'] = $_POST['userId'];
+        if ($this->model('User_model')->ubahDataUser($data) > 0) {
+            header('Location: ' . BASEURL . '/dashboardAdmin');
+            exit;
+        } else {
+            header('Location: ' . BASEURL . '/dashboardAdmin');
+            exit;
+        }
+    }
+
     public function getUbah()
     {
         echo json_encode($this->model('User_model')->getUserById($_POST['id']));

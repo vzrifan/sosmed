@@ -14,15 +14,28 @@ class Following extends controller
 
         $data['follower'] = [];
         foreach ($followerResults as $follower) {
-            $follower['follower'] = $this->model('Followers_model')->getUsernameById($follower['follower_id'])['username'];
-            $data['follower'][] = $follower;
+            $userDetails = $this->model('Followers_model')->getUsernameById($follower['follower_id']);
+
+            if (is_array($userDetails)) {
+                $follower['follower'] = $userDetails['username'];
+                $data['follower'][] = $follower;
+            } else {
+                echo "";
+            }
         }
 
         $data['following'] = [];
         foreach ($followingResults as $following) {
-            $following['following'] = $this->model('Followers_model')->getUsernameById($following['following_id'])['username'];
-            $data['following'][] = $following;
+            $userDetails = $this->model('Followers_model')->getUsernameById($following['following_id']);
+
+            if (is_array($userDetails)) {
+                $following['following'] = $userDetails['username'];
+                $data['following'][] = $following;
+            } else {
+                echo "";
+            }
         }
+
         $this->view('templates/header', $data);
         $this->view('templates/navbar');
         $this->view('following/index', $data);

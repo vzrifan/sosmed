@@ -28,7 +28,7 @@ class Beranda extends Controller
         include_once("/xampp/htdocs/sosmed/app/config/configGoogle.php");
         unset($_SESSION['id']);
         unset($_SESSION['token']);
-        unset($_SESSION['google_data']); //Google session data unset
+        unset($_SESSION['google_data']);
         $gClient->revokeToken();
         session_destroy();
         header('Location:' . BASEURL . '/loginUser');
@@ -46,7 +46,34 @@ class Beranda extends Controller
 
     public function posting()
     {
-        if ($this->model('Posting_model')->tambahDataposting($_POST) > 0) {
+        $postData = $_POST;
+
+        $date = new DateTime();
+        $dateFormat = 'Y-m-d H:i:s';
+        $currentDate = $date->format($dateFormat);
+
+        if (isset($_FILES["pict"]) && $_FILES["pict"]["error"] == 0) {
+            $allowedTypes = [IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_GIF];
+            $detectedType = exif_imagetype($_FILES["pict"]["tmp_name"]);
+
+            if (in_array($detectedType, $allowedTypes)) {
+                $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/sosmed/public/img/';
+                $uploadPath = $uploadDir . $currentDate . '.jpg';
+
+                if (file_exists($uploadPath)) {
+                    unlink($uploadPath);
+                }
+
+                $fileName = str_replace(array("-", ":", " "), "", $currentDate);
+                move_uploaded_file($_FILES["pict"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . '/sosmed/public/img/' . $fileName . '.jpg');
+            } else {
+                echo "Error: Only JPEG, PNG, and GIF images are allowed.";
+            }
+        } else {
+            echo "Error: Please choose a valid image file.";
+        }
+
+        if ($this->model('Posting_model')->tambahDataposting($postData, $currentDate) > 0) {
             header('Location: ' . BASEURL . '/beranda');
             exit;
         } else {
@@ -94,6 +121,48 @@ class Beranda extends Controller
         $this->view('templates/navbar');
         $this->view('beranda/otherProfile', $data);
         $this->view('templates/footer');
+    }
+
+    public function settings()
+    {
+        $data['judul'] = "Settings";
+        $data['user'] = $this->model('User_model')->getUserById($_SESSION['id']);
+        $this->view('templates/header', $data);
+        $this->view('templates/navbar');
+        $this->view('beranda/settings', $data);
+        $this->view('templates/footer');
+    }
+
+    public function ubah()
+    {
+        $data['username'] = $_POST['username'];
+        $data['password'] = $_POST['password'];
+        $data['id'] = $_SESSION['id'];
+        if ($this->model('User_model')->ubahDataUser($data) > 0) {
+            header('Location: ' . BASEURL . '/beranda/settings');
+            exit;
+        } else {
+            header('Location: ' . BASEURL . '/beranda/settings');
+            exit;
+        }
+    }
+
+    public function hapus()
+    {
+        if(isset($_SESSION['token'])){
+            $this->model('User_model')->hapusUserGoogle();
+        }
+
+        if ($this->model('User_model')->hapusDataUser($_SESSION['id']) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            unset($_SESSION['id']);
+            header('Location: ' . BASEURL . '/loginUser');
+            exit;
+        } else {
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/beranda/settings');
+            exit;
+        }
     }
 
     public function comment($id)
