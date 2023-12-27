@@ -3,11 +3,15 @@
 class Beranda extends Controller
 {
 
-    public function index()
+    public function __construct()
     {
         if (!isset($_SESSION['id'])) {
             header('Location:' . BASEURL . '/loginUser');
         }
+    }
+
+    public function index()
+    {
         $data['judul'] = 'Beranda';
         $data['userPost'] = $this->model('Posting_model')->getAllPosting();
         $data['isFollowed'] = $this->model('Followers_model')->isFollowed();

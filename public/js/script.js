@@ -9,3 +9,4 @@ $(function () {
     $(".modal-footer button[type=submit]").html("Ubah");
   });
 });
+
