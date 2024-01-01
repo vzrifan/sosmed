@@ -87,6 +87,16 @@ class User_model
 
     public function hapusDataUser($id)
     {
+        if(isset($_SESSION['token'])){
+            $sql = "DELETE FROM users2 WHERE fname=:fname";
+            $data = $this->getUserById($id);
+
+            $this->db->query($sql);
+            $this->db->bind('fname', $data['username']);
+            
+            $this->db->execute();
+        }
+
         $query = "DELETE FROM users WHERE id = :id";
         $this->db->query($query);
         $this->db->bind('id', $id);
@@ -109,6 +119,10 @@ class User_model
 
     public function ubahDataUser($data)
     {
+        if (isset($_SESSION['token'])) {
+            return -1;
+        }
+
         $insertQuery = "UPDATE users SET username = :username, password = :password WHERE id = :id";
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 

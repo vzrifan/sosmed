@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-info">
+<nav class="navbar navbar-expand-lg navbar-light customNavbar">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,7 +23,7 @@
                 <li class="nav-item">
                     <!-- Button trigger modal -->
                     <button type="button" class="btn nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAASxJREFUSEvt1tEqBkEUwPHfd03xBCIvoOSah5BrF4q8BB5CSinXvAT3ilsu8AqUXLKjb7W+vt0dO+NbytQ2NTPn/M/Zc2bOGehpDHriigFPYR0LCUY+4AyvpY428CyusJgALUVvsYyXsNAG3sVhBmipYgsnMeB97A2l2oxssu9tuHlQzEFnq8e/GryJeTwW82mN2z/i8QVWcYm1PwUeF8+YGCd7HAsOMQ1fOZYwgyfcVNZDvMuYN8Y4Flw913SFPq9OcSWzgHvzeNTLicX4H5z8csVmdZdilSWrJwLewVEXUo3MNo5Hy+K4Xx06kOth9Unl32EFzzHgcGYaG5hLIN/jvK7niikICeyvotV2pjdwrkSK6s2qh3Il0rfBuRLpo4tsG1HWtSnpst8b+B0czWkf7tIMXwAAAABJRU5ErkJggg==" />
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAiNJREFUSEvF1kvoTVEUx/HPHxmQRyihPAoRAxNhRJkyMKKUjCQDKSkyk1dIZGQkpUjJADMDSpFHmSF55ZnHgDJRHnfVOf+O0zl3n3v+/9t/j+7trLW/e61+e6/fgBFaAyPE1St4NFZiLmZkh/6AV7iP300LaQpegH3YgMk1m3/DVRzBy9QBUuBxOIodiGqbrF84jgOI35WrG3gObmBJE1pFzAOs6xz6c1V+HXgx7mBKS2ie9h6r8La8TxV4Oh5h1hChefqTTueW42dxvyrwJWxMQL/jcRazDJMS8aexqxt4UQcaJ0yt21iTBd3C6kRCiCyu4Mc8rlzx+c5V2JKioldwbHkY+6vAY/EVE/oEfo15VeC1uNkAGiFtKo68hXgeP4qt3opzFeCikPLPIaxcLKcQAiuuOsGtx/UyeA+OVYCL1TVsiDrBxWFD4f9VvBsn+gwOxskyeBMu9rnV8T5cLoNj3N1t2Mu24ooX7GEZHEL7gqkN4G3AnzATf8vg+H8W2/oEPoOddS/XfDzrzNJRCXivFYczicdjcEpVDYkLnUu+OQHudUhEJ7cX96wCT0MM8XjUh2M9xQr8SIHje3ise8NgBMIIBvRduYJu1icqvoalLcsOMxFP5OAobFJxHjMeBzM1pgSX58TsDYN4qK3ZKx4wDMLezN5OrOlA2Nsr2dx9k+pSyt6W88dk5m12ydC/yAT5JwWsu8dN84Yc12vFQwbmG/wDmONpH9S+OtIAAAAASUVORK5CYII=" />
                     </button>
                 </li>
                 <li class="nav-item me-5">

@@ -149,7 +149,7 @@ class Beranda extends Controller
 
     public function hapus()
     {
-        if(isset($_SESSION['token'])){
+        if (isset($_SESSION['token'])) {
             $this->model('User_model')->hapusUserGoogle();
         }
 
@@ -190,13 +190,14 @@ class Beranda extends Controller
 
     public function createLikeButton($val, $id, $id_user)
     {
-        $icon = "<img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAgRJREFUSEvl1kuozVEUx/HPxUApAwNh4JWUx0CSmHiMjJTynKHIQJmYeOWRXEYmJEWmhJEMlJQZRRkokUiSiedM8vyvWv/b/x7n3PM/995z7sCenM7e+7++67f22mvtPmM0+saIayTgHZidjr/HTXyuK2S44J240gB5hyX4VAc+HPAq3MOEJoC9uNAN8Bw8xhR8w8r8fZGw3bg82uDJeIT5aXgLbuAoTuTcLLwdTfB43MXaNHoygfH3JebhCZbWgcaeumd8CbvS6C1swJ8ikxfjac4fRv9ogiNhzqfBZ1iW5xpTofxIp2FupngPDlTuZ1XAhwxlXJtyhCMLaqh8k04OXMFqqFfj/hBGIoMfNqzHnY0MrzuWZ4IOOuNDOJUWyixdg3CoVT4sxCaMa0M+lusHcabR2PEiYcoNZSSazdVVV90XiRgjBIXNQYq7BY6r+HMswOtwJ8EDla2aXN1SfBXb8KOo41PxtRehnoSPRUJNzLa5uTz4biuOunAxYeuL4nO7V+AHxfmuQBSfaUV9/90LcLTQ1wk6i/3V+9XNUJ/O8hu8KKvPewEOQVHTZ7Rql1XF1YZe9t140G1PT8u5OpVrUaWj7cO5xo+q4K24VsdqB3u+Yzq+DAWOQn+9aOwbOzDcbmtTta06ztzi6TqzncU267/wCvHebjrqPn1G6Me/n/9/4L/NLWMf7q05RAAAAABJRU5ErkJggg=='/>";
+        $icon = "<img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAodJREFUSEvNlk2ITlEYx39jhppmSLHRLIwkU2iyYGNBRON70kSJWfjYsWAzZKvIRsmSjZlpUGjIjJrxkY2UhY+SkWJWsvBRLHzG+U/Pq9Nxz73vve+tceqt9577nOf3fJ9bxyStukni8l+D64GFQAPwDPgdidIUYDHwExgDfqVFM83j9Q52HFgCTDUl34CHwBHgge2tAE4Cy4FptvcDeAIcBUaTDEgCCyJFhzPyf9oMOpAhdwo4ZpH4K5oE7gd2msRH4Dxw0543AvuAmQHsJSBDXtj+IuAQMN+ee4Fu/0wI3uWEJaR1G9jkwvo1gDS6sA4Bq2x/BNiSINdkBq80uR3A5YouH6wiGgdagE9AG/AuEsZmi4Re7wW+ROTmWKFNB14BC5LAq81LvVN+FboyVo/VjHQtc1F8pD++xweBM0ZqB56WQbVqVydo7Qb6QrBa5IQJzAbelwSeC7wxXfuBcyF4j5e3dYCKpoy1zc2CK6ZIxTrRIX6oW4HXXqUKXsa6ax2goTIL+ByC9XwN6DSaenmgRrJyesF0nHXpUx1NrLCP5znwY2CGmzayUP15qyBcI/e6zfi3Nsc/xMDaXwMM2zgsCu8AbhhUl4Z03vcdiF0SOjhoQ/87sDWH52utgDTzZbjG7D+FmnY7+VYLrtDdyQi7D9VNtjnWHVkfAsqxWkF3sWa2rI/BQ6gMvxczNAusc9XAc0GTqjpmoOBXAV0koee5oXnAku1yN9bFAC5DNIlUSMppanirqeqY59ttqOj7Sp4r9/qp+DZ4t1tm61eT41CJPL8ECK6Vy9O0AZJprbvU9aWiUVhpM83jXKuIxxXAUvP2eS5iZFYX0VHoTC0eFwLWmuOaoDr8B/UffB90yxnWAAAAAElFTkSuQmCC'/>";
         if ($val) {
             $url = BASEURL . "/beranda/unlike/" . $id . "/" . $id_user;
-            return "<a href='$url'><button class='btn btn-success'>" . $icon . "</button></a>";
+            $icon2 = "<img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAZhJREFUSEvl1j9IF2EYwPHPL/+MLo4uhkOLrS5uRpBUCA612BK46eKkuAqKSxC41VRTIbg4SAXhIuGiOLkoTm4uTqZpvnAnP17O+91dv0Oh2973Hp7v8/99Gu7oa9wR170Gd+AROrGHq1ui9ACDuMA+/uRFM8/j0WvYAh6jK1Fyhl+YxVZyN4wlDKE7uTvHLubwPcuALHCABEUzLfL/LjFoqoXcMuaTSNyIZoFXMd7movuC1806Y/AEPrUZmqp7ha/poRkciugIfTWBD66dGsgCj+BHTdBUbSjA7XBo9nga72sGv8HnGBxaZLFm8CQ+xOC3+Fgz+AXWY3A/DmsEh6HSi9MYHM5rGKsJvoKbYRP38UPsoKfN8ONkjp9ktVN6F9pqI3kU2sEPj8YTbOZNrvTf06QI0sehqgEhr8/xLVaQ9zr9K/xWaFZxxYZVhedCi4CDTFl4S2hRcBl4WBReZuW0TI7Lhr0wtIzHrao9QJ/hZ9Hyr7JlxjkvDa3icez5ZVlP8yZX0WiFLfR31eWhSqiLGpYr9/+B/wL/F0cfaeSTzgAAAABJRU5ErkJggg=='/>";
+            return "<a href='$url'><button class='btn'>" . $icon2 . "</button></a>";
         }
         $url = BASEURL . "/beranda/like/" . $id . "/" . $id_user;
-        return "<a href='$url'><button class='btn btn-secondary'>" . $icon . "</button></a>";
+        return "<a href='$url'><button class='btn'>" . $icon . "</button></a>";
     }
 
     public function like($id_posting, $id_user)
