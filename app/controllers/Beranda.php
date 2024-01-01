@@ -38,10 +38,17 @@ class Beranda extends Controller
     {
         $data['judul'] = 'Daftar User';
         $data['users'] = $this->model('User_model')->cariDataUser();
-        $this->view('templates/header', $data);
-        $this->view('templates/navbar');
-        $this->view('beranda/search', $data);
-        $this->view('templates/footer');
+        if (count($data['users']) != 0) {
+            $this->view('templates/header', $data);
+            $this->view('templates/navbar');
+            $this->view('beranda/search', $data);
+            $this->view('templates/footer');
+        } else {
+            $this->view('templates/header', $data);
+            $this->view('templates/navbar');
+            $this->view('beranda/nosearch');
+            $this->view('templates/footer');
+        }
     }
 
     public function posting()
@@ -49,6 +56,7 @@ class Beranda extends Controller
         $postData = $_POST;
 
         $date = new DateTime();
+        $date->setTimezone(new DateTimeZone('Asia/Jakarta'));
         $dateFormat = 'Y-m-d H:i:s';
         $currentDate = $date->format($dateFormat);
 

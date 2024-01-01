@@ -11,7 +11,7 @@
                                 $src = file_exists($imagePath) ? BASEURL . '/img/' . $posting['id'] . '.jpg' : BASEURL . '/img/profile.jpg';
                                 ?>
                                 <div class="col-1">
-                                    <a href="<?= BASEURL; ?>/beranda/otherProfile/<?= $posting['id']; ?>"> <img src="<?= $src ?>" , alt="Photo" , height="40" , width="30" , class="rounded-circle"></a>
+                                    <a href="<?= BASEURL; ?>/beranda/otherProfile/<?= $posting['id']; ?>"> <img src="<?= $src ?>" , alt="Photo" , height="40" , width="40" , class="rounded-circle"></a>
                                 </div>
                                 <div class="col mt-2">
                                     <a href="<?= BASEURL; ?>/beranda/otherProfile/<?= $posting['id']; ?>" class="text-decoration-none text-reset">
@@ -19,7 +19,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <p class="card-text"><small class="text-muted"><?= $posting['post_date']; ?></small></p><br>
+                            <p class="card-text"><small class="text-muted"><?= $posting['post_date']; ?></small></p>
                             <p class="card-text"><?= $posting['content']; ?></p><br>
                             <?php
                             $imagePath = '/sosmed/public/img/' . str_replace(array("-", ":", " "), "", $posting['post_date']) . '.jpg';

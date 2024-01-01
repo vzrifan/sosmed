@@ -20,7 +20,7 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            margin-top: 5rem;
+            /* margin-top: 5rem; */
         }
 
         .external-icon {

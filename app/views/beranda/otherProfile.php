@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row justify-content-center mt-2">
         <div class="col-2 text-center">
-            <img src="<?= $data['pict'] ?>" , alt="Photo" , width="80" , height="120" , class="rounded-circle shadow"><br><br>
+            <img src="<?= $data['pict'] ?>" , alt="Photo" , width="120" , height="120" , class="rounded-circle shadow"><br><br>
             <h5><?= $data['user']; ?></h5>
         </div>
         <div class="col-1 mt-5">
@@ -29,7 +29,7 @@
                             $src = file_exists($imagePath) ? BASEURL . '/img/' . $posting['id'] . '.jpg' : BASEURL . '/img/profile.jpg';
                             ?>
                             <div class="col-1">
-                                <img src="<?= $src ?>" , alt="Photo" , height="40" , width="30" , class="rounded-circle">
+                                <img src="<?= $src ?>" , alt="Photo" , height="40" , width="40" , class="rounded-circle">
                             </div>
                             <div class="col mt-2">
                                 <h5 class="card-title"><?= $posting['username']; ?></h5>

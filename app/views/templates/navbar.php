@@ -11,7 +11,7 @@
                     $src = file_exists($imagePath) ? BASEURL . '/img/' . $_SESSION['id'] . '.jpg' : BASEURL . '/img/profile.jpg';
                     ?>
                     <a class="nav-link" href="<?= BASEURL; ?>/beranda/profile/<?= $_SESSION['id']; ?>">
-                        <img src="<?= $src ?>" , alt="Photo" , height="40" , class="rounded-circle shadow">
+                        <img src="<?= $src ?>" , alt="Photo" , height="40" , width="40" , class="rounded-circle shadow">
                     </a>
                 </li>
                 <li class="nav-item ms-5">

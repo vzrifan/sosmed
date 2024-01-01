@@ -26,7 +26,7 @@ class Comments_model extends Controller
 
     public function insertComment($id_posting, $user_id, $comment_text)
     {
-        $query = "INSERT INTO comments (id_posting, id_user, comment_text, comment_date) VALUES (:id_posting, :id_user, :comment_text, NOW())";
+        $query = "INSERT INTO comments (id_posting, id_user, comment_text, comment_date) VALUES (:id_posting, :id_user, :comment_text, CONVERT_TZ(NOW(), 'UTC', 'Asia/Jakarta'))";
 
         $this->db->query($query);
         $this->db->bind('id_posting', $id_posting);

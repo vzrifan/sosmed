@@ -11,7 +11,7 @@
                             ?>
                             <div class="row-1 text-align-start">
                                 <a href="<?= BASEURL; ?>/beranda/otherProfile/<?= $user['id']; ?>" class="card-text text-reset text-decoration-none">
-                                    <img src="<?= $src ?>" , alt="Photo" , height="40" , width="30" , class="rounded-circle">
+                                    <img src="<?= $src ?>" , alt="Photo" , height="40" , width="40" , class="rounded-circle">
                                 </a>
                             </div>
                             <div class="row">
