@@ -5,7 +5,20 @@
                 <div class="row">
                     <div class="col">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $posting['username']; ?></h5>
+                            <div class="row mb-2 justify-content-start">
+                                <?php
+                                $imagePath = $_SERVER['DOCUMENT_ROOT'] . '/sosmed/public/img/' . $posting['id'] . '.jpg';
+                                $src = file_exists($imagePath) ? BASEURL . '/img/' . $posting['id'] . '.jpg' : BASEURL . '/img/profile.jpg';
+                                ?>
+                                <div class="col-1">
+                                    <a href="<?= BASEURL; ?>/beranda/otherProfile/<?= $posting['id']; ?>"> <img src="<?= $src ?>" , alt="Photo" , height="40" , width="30" , class="rounded-circle"></a>
+                                </div>
+                                <div class="col mt-2">
+                                    <a href="<?= BASEURL; ?>/beranda/otherProfile/<?= $posting['id']; ?>" class="text-decoration-none text-reset">
+                                        <h5 class="card-title"><?= $posting['username']; ?></h5>
+                                    </a>
+                                </div>
+                            </div>
                             <p class="card-text"><small class="text-muted"><?= $posting['post_date']; ?></small></p><br>
                             <p class="card-text"><?= $posting['content']; ?></p><br>
                             <?php

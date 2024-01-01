@@ -238,10 +238,10 @@ class Beranda extends Controller
     {
         if ($val == "Follow") {
             $url = BASEURL . "/beranda/follow/" . $id;
-            return "<a href='$url'><button class='btn btn-primary'>" . $val . "</button></a>";
+            return "<a href='$url'><button class='btn btn-dark'>" . $val . "</button></a>";
         }
         $url = BASEURL . "/beranda/unfollow/" . $id;
-        return "<a href='$url'><button class='btn btn-success'>" . $val . "</button></a>";
+        return "<a href='$url'><button class='btn btn-light'>" . $val . "</button></a>";
     }
 
     public function parseIsFollowed($data)

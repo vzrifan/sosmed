@@ -2,9 +2,9 @@
     <div class="row justify-content-center mt-2">
         <div class="col-2 text-center">
             <a href="#" data-bs-toggle="modal" data-bs-target="#formModal">
-                <img src="<?= $data['pict'] ?>" , alt="Photo" , width="180" , class="rounded-circle shadow"><br><br>
+                <img src="<?= $data['pict'] ?>" , alt="Photo" , width="80" , height="120" , class="rounded-circle shadow"><br><br>
             </a>
-            <?= $data['user']; ?>
+            <h5><?= $data['user']; ?></h5>
         </div>
         <div class="col-1 mt-5">
             Post<br>
@@ -24,7 +24,18 @@
             <div class="row justify-content-center">
                 <div class="card" style="width: 50rem;">
                     <div class="card-body">
-                        <h5 class="card-title"><?= $posting['username']; ?></h5>
+                        <div class="row mb-2 justify-content-start">
+                            <?php
+                            $imagePath = $_SERVER['DOCUMENT_ROOT'] . '/sosmed/public/img/' . $posting['id'] . '.jpg';
+                            $src = file_exists($imagePath) ? BASEURL . '/img/' . $posting['id'] . '.jpg' : BASEURL . '/img/profile.jpg';
+                            ?>
+                            <div class="col-1">
+                                <img src="<?= $src ?>" , alt="Photo" , height="40" , width="30" , class="rounded-circle">
+                            </div>
+                            <div class="col mt-2">
+                                <h5 class="card-title"><?= $posting['username']; ?></h5>
+                            </div>
+                        </div>
                         <p class="card-text"><small class="text-muted"><?= $posting['post_date']; ?></small></p><br>
                         <p class="card-text"><?= $posting['content']; ?></p><br>
                         <?php

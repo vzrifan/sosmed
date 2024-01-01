@@ -1,9 +1,9 @@
 <div class="container mt-5">
-    <div class="row">
-        <div class="col">
-            <table class="table table-success table-striped">
+    <div class="row justify-content-center">
+        <div class="col-3">
+            <table class="table table-light table-striped">
                 <tr>
-                    <th>Followers</th>
+                    <th style="text-align: center;">Followers</th>
                 </tr>
                 <?php foreach ($data['follower'] as $follower) : ?>
                     <tr>
@@ -12,10 +12,10 @@
                 <?php endforeach; ?>
             </table>
         </div>
-        <div class="col">
-            <table class="table table-success table-striped">
+        <div class="col-3">
+            <table class="table table-light table-striped">
                 <tr>
-                    <th>Following</th>
+                    <th style="text-align: center;">Following</th>
                 </tr>
                 <?php foreach ($data['following'] as $following) : ?>
                     <tr>

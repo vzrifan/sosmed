@@ -30,7 +30,7 @@
                     <div class="col nav-link">
                         <form action="<?= BASEURL; ?>/beranda/search" method="post" class="d-flex">
                             <input type="text" class="form-control" placeholder="Search" name="keyword" id="keyword" autocomplete="off">
-                            <button class="btn btn-primary" type="submit" id="tombolCari">Cari</button>
+                            <button class="btn btn-dark" type="submit" id="tombolCari">Cari</button>
                         </form>
                     </div>
                 </li>
@@ -66,7 +66,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Send</button>
+                    <button type="submit" class="btn btn-dark">Send</button>
                 </div>
             </form>
         </div>
